@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form';
 
 class PostsNew extends Component {
   render() {
     return (
-      <div>PostsNew!</div>
+      <form action=''>
+        <Field
+          name='title',
+          component={}
+        />
+      </form>
     );
 
   }
