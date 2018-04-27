@@ -16,10 +16,6 @@ ReactDOM.render(
     <BrowserRouter>
       <div>
         <Switch>
-          {/* Without using Switch, react-router-dom loosely matches and
-          displays all similar paths (like a * wildcard regex match).
-          Switch ensures it stops after the first match, so we must
-          put the most specific route(s) at the top of the list. */}
           <Route path='/posts/new' component={PostsNew} />
           <Route path='/' component={PostsIndex} />
         </Switch>
