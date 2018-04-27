@@ -15,4 +15,6 @@ class PostsNew extends Component {
   }
 }
 
-export default PostsNew;
+export default reduxForm({
+  form: 'PostsNewForm'
+})(PostsNew);
