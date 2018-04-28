@@ -44,13 +44,13 @@ function validate(values) {
   const errors = {};
 
   // validate the inputs from 'values'
-  if (!value.title) {
+  if (!values.title) {
     errors.title = 'Enter a title';
   }
-  if (!value.categories) {
+  if (!values.categories) {
     errors.categories = 'Enter some categories';
   }
-  if (!value.content) {
+  if (!values.content) {
     errors.content = 'Enter some content please';
   }
 
