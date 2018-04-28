@@ -16,9 +16,28 @@ class PostsNew extends Component {
     );
   }
 
+  onSubmit(values) {
+    console.log(values);
+  }
+
   render() {
+    const { handleSubmit } = this.props;
+
+    // handleSubmit comes from reduxForm
+    // setting it to the onSubmit event handler basically
+    // tells React to always run the reduxForm validation
+    // on form submittal. In this way, we are truly connecting
+    // reduxForm to the form's submission.
+    // the callback passed as an argument gets called upon
+    // successful validation. As a callback, it must therefore
+    // be correctly bound to the component.
+    // Within this callback, we specify what happens when the
+    // validation is successful (eg. sending http requests, API
+    // calls, etc) with the values argument containing the
+    // user's inputs.
+    
     return (
-      <form action=''>
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <Field
           label='Title'
           name='title'
@@ -34,6 +53,7 @@ class PostsNew extends Component {
           name='content'
           component={this.renderField}
         />
+        <button className='btn btn-primary' type='submit'>Submit</button>
       </form>
     );
 
