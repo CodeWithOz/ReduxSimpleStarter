@@ -11,7 +11,7 @@ class PostsNew extends Component {
           type='text'
           {...field.input}
         />
-        {field.meta.error}
+        {field.meta.touched ? field.meta.error : ''}
       </div>
     );
   }
@@ -35,7 +35,7 @@ class PostsNew extends Component {
     // validation is successful (eg. sending http requests, API
     // calls, etc) with the values argument containing the
     // user's inputs.
-    
+
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <Field
