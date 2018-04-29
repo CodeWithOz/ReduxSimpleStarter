@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { createPost } from '../actions';
 
 class PostsNew extends Component {
   renderField(field) {
@@ -23,7 +25,7 @@ class PostsNew extends Component {
   }
 
   onSubmit(values) {
-    console.log(values);
+    this.props.createPost(values);
   }
 
   render() {
@@ -90,4 +92,13 @@ function validate(values) {
 export default reduxForm({
   validate,
   form: 'PostsNewForm'
-})(PostsNew);
+})(
+  // ABSOLUTELY **NO IDEA** what is going on here, but it seems we are
+  // hooking up connect and reduxForm to the PostsNew component.
+  // Apparently, when you have two functions that take this ()() syntax
+  // like with connect and reduxForm, you nest one inside the other as
+  // done here. Looks like connect is placed inside because it returns
+  // a (connected) React component, which can then be passed as an argument
+  // to reduxForm
+  connect(null, { createPost })(PostsNew)
+);
