@@ -8,10 +8,15 @@ class PostsShow extends Component {
   }
 
   render() {
-    console.log(this.props.postShown);
+    const postShown = this.props.postShown[this.props.match.params.id];
+    if (!postShown) {
+      return <div>Loading...</div>;
+    }
     return (
       <div>
-        Posts Show!
+        <h3>{postShown.title}</h3>
+        <p>Category: {postShown.categories}</p>
+        <p>{postShown.content}</p>
       </div>
     );
   }
