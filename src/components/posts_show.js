@@ -21,6 +21,12 @@ class PostsShow extends Component {
         <p>Category: {postShown.categories}</p>
         <p>{postShown.content}</p>
         <Link to='/' className='btn btn-primary'>Back</Link>
+        <button
+          className='btn btn-danger'
+          onClick={this.handleClick}
+        >
+          Delete post
+        </button>
       </div>
     );
   }
