@@ -5,11 +5,13 @@ import { Link } from 'react-router-dom';
 
 class PostsShow extends Component {
   componentDidMount() {
-    this.props.fetchPost(this.props.match.params.id);
+  const { id } = this.props.match.params;
+    this.props.fetchPost(id);
   }
 
   render() {
-    const postShown = this.props.postShown[this.props.match.params.id];
+    const { id } = this.props.match.params;
+    const postShown = this.props.postShown[id];
     if (!postShown) {
       return <div>Loading...</div>;
     }
