@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchPost } from '../actions';
+import { Link } from 'react-router-dom';
 
 class PostsShow extends Component {
   componentDidMount() {
@@ -17,6 +18,7 @@ class PostsShow extends Component {
         <h3>{postShown.title}</h3>
         <p>Category: {postShown.categories}</p>
         <p>{postShown.content}</p>
+        <Link to='/' className='btn btn-primary'>Back</Link>
       </div>
     );
   }
