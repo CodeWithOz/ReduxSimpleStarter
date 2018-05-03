@@ -1,9 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPost } from '../actions';
+import { fetchPost, deletePost } from '../actions';
 import { Link } from 'react-router-dom';
 
 class PostsShow extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(event) {
+    event.preventDefault();
+    const { id } = this.props.match.params;
+    this.props.deletePost(id, () => {
+      this.props.history.push('/');
+    });
+  }
+
   componentDidMount() {
   const { id } = this.props.match.params;
     this.props.fetchPost(id);
@@ -36,4 +50,4 @@ function mapStateToProps({ postShown }) {
   return { postShown };
 }
 
-export default connect(mapStateToProps, { fetchPost })(PostsShow);
+export default connect(mapStateToProps, { fetchPost, deletePost })(PostsShow);
